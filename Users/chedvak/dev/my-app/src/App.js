@@ -4,12 +4,12 @@ import './App.css';
 const App = () => {
 
   const [count, setCount] = useState(0);
-  const [name, setName] = useState('harry');
-  const [surname, setSurname] = useState('potter');
+  const name = useFormInput('harry');
+  const surname = useFormInput('potter');
   const width = useWindowWidth();
 
   useEffect(() => {
-    document.title = name + " " + surname;
+    document.title = name.value + " " + surname.value;
   });
 
   return (
@@ -21,17 +21,15 @@ const App = () => {
       <br />
       <section>
         <div >
-          <div>Name: </div>
+          <div>name: </div>
           <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+           {...name}
           />
         </div>
         <div>
           <div>surname: </div>
           <input
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
+           {...surname}
           />
         </div>
         <br />
@@ -44,6 +42,17 @@ const App = () => {
   );
 };
 export default App;
+
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+  return {
+    value,
+    onChange: handleChange
+  };
+}
 
 
 function useWindowWidth() {
