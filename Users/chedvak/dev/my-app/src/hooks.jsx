@@ -11,15 +11,15 @@ const App = () => {
     document.title = name + " " + surname;
   });
 
-//just willmount
-//   useEffect(() => {
-//     document.title = name + " " + surname;
-//   },[]);
+  //just willmount
+  //   useEffect(() => {
+  //     document.title = name + " " + surname;
+  //   },[]);
 
-//just when name change
-//   useEffect(() => {
-//     document.title = name + " " + surname;
-//   },[name]);
+  //just when name change
+  //   useEffect(() => {
+  //     document.title = name + " " + surname;
+  //   },[name]);
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
